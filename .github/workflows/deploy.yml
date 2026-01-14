@@ -39,7 +39,7 @@ jobs:
       with:
         image: kapildev244/dmswebapi
         registry: docker.io
-        dockerfile: DMS.Auth/DMS.Auth//Dockerfile
+        dockerfile: DMS.Auth/DMS.Auth/Dockerfile
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
         tags: latest, master-${{ github.sha }}
