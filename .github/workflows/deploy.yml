@@ -42,3 +42,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           tags: latest,main-${{ github.sha }}
+
+      - name: Trigger Render Deploy
+        run: |
+            curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
