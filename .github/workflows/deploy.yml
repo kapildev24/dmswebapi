@@ -34,3 +34,17 @@ jobs:
     - name: Test
       run: dotnet test DMS.Auth/DMS.Auth/DMS.Auth.csproj --no-build --verbosity normal
 
+    - name: Build and push Docker Image
+      uses: mr-smithers-excellent/docker-build-push@v6
+      with:
+        image: kapildev244/dmswebapi
+        registry: docker.io
+        dockerfile: DMS.Auth/DMS.Auth//Dockerfile
+        username: ${{ secrets.DOCKER_HUB_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        tags: latest, master-${{ github.sha }}
+ 
+    # - name: Trigger Render Deploy
+    #   run: |
+    #     curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+
