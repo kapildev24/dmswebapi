@@ -1,7 +1,4 @@
-﻿using DMS.Auth.Infrastructure.Persistence;
-using DMS.Auth.Infrastructure.Security;
-
-namespace DMS.Auth.Feature.Auth.Register
+﻿namespace DMS.Auth.Feature.Auth.Register
 {
     public sealed class RegisterHandler
     {
