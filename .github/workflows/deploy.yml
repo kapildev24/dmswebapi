@@ -16,18 +16,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: List repository files
-      run: |
-        pwd
-        ls
-        ls -R
+    # - name: List repository files
+    #   run: |
+    #     pwd
+    #     ls
+    #     ls -R
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    # - name: Restore dependencies
-    #   run: dotnet restore DMS.Auth/DMS.Auth.csproj
-    # - name: Build
-    #   run: dotnet build DMS.Auth/DMS.Auth.csproj --no-restore
-    # - name: Test
-    #   run: dotnet test DMS.Auth/DMS.Auth.csproj --no-build --verbosity normal
+    - name: Restore
+      run: dotnet restore DMS.Auth/DMS.Auth/DMS.Auth.csproj
+    
+    - name: Build
+      run: dotnet build DMS.Auth/DMS.Auth/DMS.Auth.csproj --no-restore
+    
+    - name: Test
+      run: dotnet test DMS.Auth/DMS.Auth/DMS.Auth.csproj --no-build --verbosity normal
+
