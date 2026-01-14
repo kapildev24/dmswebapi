@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -22,21 +23,23 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Restore
-        run: dotnet restore DMS.Auth/DMS.Auth.sln
+        run: dotnet restore DMS.Auth.sln
 
       - name: Build
-        run: dotnet build DMS.Auth/DMS.Auth.sln --no-restore
+        run: dotnet build DMS.Auth.sln --no-restore
 
       - name: Test
-        run: dotnet test DMS.Auth/DMS.Auth.sln --no-build --verbosity normal
+        run: dotnet test DMS.Auth.sln --no-build --verbosity normal
 
-      - name: Build and push Docker Image
+      - name: Build and Push Docker Image
         if: github.event_name == 'push'
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
           image: kapildev244/dmswebapi
           registry: docker.io
-          dockerfile: DMS.Auth/DMS.Auth/Dockerfile
+          dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          tags: latest, main-${{ github.sha }}
+          tags: |
+            latest
+            main-${{ github.sha }}
