@@ -12,6 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: dmswebapi
 
     steps:
       - name: Checkout repository
@@ -37,9 +38,11 @@ jobs:
         with:
           image: kapildev244/dmswebapi
           registry: docker.io
-          dockerfile: Dockerfile
+          dockerfile: DMS.Auth/Dockerfile
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-          tags: |
-            latest
-            main-${{ github.sha }}
+          tags: latest,main-${{ github.sha }}
+
+      - name: Trigger Render Deploy
+        run: |
+            curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
