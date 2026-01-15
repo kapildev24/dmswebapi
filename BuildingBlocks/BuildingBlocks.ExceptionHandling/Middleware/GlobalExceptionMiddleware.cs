@@ -1,11 +1,4 @@
-﻿using BuildingBlocks.ExceptionHandling.Exceptions;
-using BuildingBlocks.ExceptionHandling.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System.Text.Json;
-
-namespace BuildingBlocks.ExceptionHandling.Middleware
+﻿namespace BuildingBlocks.ExceptionHandling.Middleware
 {
     public sealed class GlobalExceptionMiddleware
     {

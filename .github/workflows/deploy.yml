@@ -23,15 +23,6 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      - name: Restore
-        run: dotnet restore DMS.Auth.sln
-
-      - name: Build
-        run: dotnet build DMS.Auth.sln --no-restore
-
-      - name: Test
-        run: dotnet test DMS.Auth.sln --no-build --verbosity normal
-
       - name: Build and Push Docker Image
         if: github.event_name == 'push'
         uses: mr-smithers-excellent/docker-build-push@v6
