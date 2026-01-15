@@ -1,5 +1,5 @@
-﻿using BuildingBlocks.ExceptionHandling;
-using DMS.Auth.Feature.JobCard.Endpoint;
+﻿using DMS.Auth.Feature.JobCard.Endpoint;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace DMS.Auth.DependencyInjection
 {
@@ -21,6 +21,11 @@ namespace DMS.Auth.DependencyInjection
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "DMS Auth API V1");
                 c.RoutePrefix = string.Empty;
+            });
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
             app.MapJobCardEndpoints();
