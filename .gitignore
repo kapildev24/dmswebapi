@@ -10,3 +10,6 @@
 /DMS.Auth/bin/Debug/net8.0
 /BuildingBlocks/BuildingBlocks.ExceptionHandling/bin/Debug/net8.0
 /BuildingBlocks/BuildingBlocks.ExceptionHandling/obj
+/DMS.Auth/auth.db-shm
+/DMS.Auth/auth.db-wal
+/DMS.Auth/auth.db-shm
