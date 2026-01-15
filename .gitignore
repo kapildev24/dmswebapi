@@ -13,3 +13,6 @@
 /DMS.Auth/auth.db-shm
 /DMS.Auth/auth.db-wal
 /DMS.Auth/auth.db-shm
+/BuildingBlocks.Common/obj
+/Common/obj
+/BuildingBlock.Common/obj
