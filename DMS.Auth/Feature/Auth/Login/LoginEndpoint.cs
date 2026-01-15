@@ -1,4 +1,6 @@
-﻿namespace DMS.Auth.Feature.Auth.Login
+﻿using Microsoft.AspNetCore.RateLimiting;
+
+namespace DMS.Auth.Feature.Auth.Login
 {
     [ApiController]
     [Route("api/auth/login")]
@@ -14,6 +16,7 @@
         [HttpPost]
         [ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [EnableRateLimiting("login-policy")]
         public async Task<ActionResult<LoginResponse>> LoginAsync(
             [FromBody] LoginRequest request,
             CancellationToken cancellationToken)
