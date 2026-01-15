@@ -13,3 +13,9 @@
 /DMS.Auth/auth.db-shm
 /DMS.Auth/auth.db-wal
 /DMS.Auth/auth.db-shm
+/BuildingBlock.Common/obj/Debug/net8.0
+/BuildingBlock.Common/obj/BuildingBlock.Common.csproj.nuget.dgspec.json
+/BuildingBlock.Common/obj/BuildingBlock.Common.csproj.nuget.g.props
+/BuildingBlock.Common/obj/BuildingBlock.Common.csproj.nuget.g.targets
+/BuildingBlock.Common/obj/project.assets.json
+/BuildingBlock.Common/obj/project.nuget.cache
