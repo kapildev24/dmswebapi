@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BuildingBlock.Common\BuildingBlock.Common.csproj" />
     <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.ExceptionHandling\BuildingBlocks.ExceptionHandling.csproj" />
   </ItemGroup>
 
