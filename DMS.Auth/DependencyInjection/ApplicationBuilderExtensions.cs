@@ -39,7 +39,7 @@ namespace DMS.Auth.DependencyInjection
             app.UseAuthorization();
 
             app.MapControllers();
-
+            app.UseRateLimiter();
             return app;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using DMS.Auth.Feature.JobCard.Command;
 using MediatR;
-using System;
+
+
 
 namespace DMS.Auth.Feature.JobCard.CommandHandler
 {
@@ -15,7 +16,7 @@ namespace DMS.Auth.Feature.JobCard.CommandHandler
 
         public async Task<int> Handle(CreateJobCardCommand request, CancellationToken cancellationToken)
         {
-            var jobCard = new Entity.JobCard
+            var jobCard = new BuildingBlock.Common.EntityModels.JobCardEntity.JobCard
             {
                 
                 CustomerName = request.CustomerName,
