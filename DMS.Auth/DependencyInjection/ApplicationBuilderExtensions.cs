@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.ExceptionHandling;
+using DMS.Auth.Feature.JobCard.Endpoint;
 
 namespace DMS.Auth.DependencyInjection
 {
@@ -22,6 +23,7 @@ namespace DMS.Auth.DependencyInjection
                 c.RoutePrefix = string.Empty;
             });
 
+            app.MapJobCardEndpoints();
             app.UseGlobalExceptionHandling();
 
             app.UseCors("AllowAll");
