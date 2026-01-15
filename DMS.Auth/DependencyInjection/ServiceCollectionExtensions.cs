@@ -1,7 +1,11 @@
-﻿using BuildingBlocks.ExceptionHandling;
+﻿using DMS.Auth.Feature.Behaviors;
+using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Threading.RateLimiting;
 
 namespace DMS.Auth.DependencyInjection
 {
@@ -46,6 +50,25 @@ namespace DMS.Auth.DependencyInjection
             // Authentication / Authorization
             services.AddJwtAuthentication(configuration);
             services.AddAuthorization();
+
+            //Fluent Validation
+            services.AddMediatR(cfg =>
+                cfg.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
+            services.AddValidatorsFromAssembly(typeof(ServiceCollectionExtensions).Assembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddRateLimiter(options =>
+            {
+                options.AddFixedWindowLimiter("login-policy", opt =>
+                {
+                    opt.Window = TimeSpan.FromMinutes(15);
+                    opt.PermitLimit = 5;
+                    opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+                    opt.QueueLimit = 0;
+                });
+
+                // Custom response when limited
+                options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+            });
 
             return services;
         }
