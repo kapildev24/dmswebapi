@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36705.20 d17.14
+VisualStudioVersion = 17.14.36705.20
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMS.Auth", "DMS.Auth\DMS.Auth.csproj", "{7E916890-11BE-4DD3-918A-94B73395B784}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.ExceptionHandling", "BuildingBlocks\BuildingBlocks.ExceptionHandling\BuildingBlocks.ExceptionHandling.csproj", "{996C0121-7E34-450D-91CC-CDF5901C1AFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{7E916890-11BE-4DD3-918A-94B73395B784}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E916890-11BE-4DD3-918A-94B73395B784}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E916890-11BE-4DD3-918A-94B73395B784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{996C0121-7E34-450D-91CC-CDF5901C1AFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996C0121-7E34-450D-91CC-CDF5901C1AFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996C0121-7E34-450D-91CC-CDF5901C1AFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996C0121-7E34-450D-91CC-CDF5901C1AFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{996C0121-7E34-450D-91CC-CDF5901C1AFF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03FB8F94-3FC7-4BF4-96B4-85929ABDA268}

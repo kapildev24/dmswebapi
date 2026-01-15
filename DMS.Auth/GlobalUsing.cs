@@ -6,3 +6,4 @@ global using DMS.Auth.Feature.Auth.Register;
 global using DMS.Auth.Infrastructure.Security;
 global using DMS.Auth.Infrastructure.Persistence;
 global using DMS.Auth.Feature.Auth.Login;
+global using DMS.Auth.Feature.RefreshToken;
