@@ -40,7 +40,7 @@
             var refreshTokenDays =
                 int.Parse(_configuration["Jwt:RefreshTokenDays"]!);
 
-            var refreshToken = new RefreshToken(
+            var refreshToken = new Entities.RefreshToken(
                 user.Id,
                 refreshTokenValue,
                 DateTime.UtcNow.AddDays(refreshTokenDays));
