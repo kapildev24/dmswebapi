@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.ExceptionHandling;
+﻿using DMS.Auth.Feature.JobCard.Endpoint;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace DMS.Auth.DependencyInjection
 {
@@ -22,6 +23,12 @@ namespace DMS.Auth.DependencyInjection
                 c.RoutePrefix = string.Empty;
             });
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+            app.MapJobCardEndpoints();
             app.UseGlobalExceptionHandling();
 
             app.UseCors("AllowAll");
