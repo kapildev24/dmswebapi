@@ -8,6 +8,12 @@
 
             builder.HasKey(x => x.Id);
 
+            builder.Property(x => x.Id)
+                .HasColumnType("uuid");
+
+            builder.Property(x => x.UserId)
+                .HasColumnType("uuid");
+
             builder.Property(x => x.Token)
                 .IsRequired();
 
