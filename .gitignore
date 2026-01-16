@@ -13,3 +13,9 @@
 /DMS.Auth/auth.db-shm
 /DMS.Auth/auth.db-wal
 /DMS.Auth/auth.db-shm
+/BuildingBlocks.Common/obj
+/Common/obj
+/BuildingBlock.Common/obj
+/DMS.Auth/auth.db
+/BuildingBlock.Common/bin/Debug/net8.0
+/DMS.Auth/logs

@@ -1,4 +1,4 @@
-﻿using DMS.Auth.Feature.JobCard.Entity;
+﻿using BuildingBlock.Common.EntityModels.JobCardEntity;
 
 namespace DMS.Auth.Infrastructure.Persistence
 {

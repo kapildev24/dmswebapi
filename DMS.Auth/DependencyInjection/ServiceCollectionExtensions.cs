@@ -1,6 +1,5 @@
-﻿using DMS.Auth.Feature.Behaviors;
+﻿using DMS.Auth.Feature.Auth.Logout;
 using FluentValidation;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.IdentityModel.Tokens;
@@ -31,7 +30,12 @@ namespace DMS.Auth.DependencyInjection
 
             services.AddDbContext<AuthDbContext>(options =>
             {
-                options.UseSqlite(
+                // SQLIte connection
+                //options.UseSqlite(
+                //    configuration.GetConnectionString("AuthDatabase"));
+
+                //For PostgreSQL connection
+                options.UseNpgsql(
                     configuration.GetConnectionString("AuthDatabase"));
             });
 
@@ -39,6 +43,7 @@ namespace DMS.Auth.DependencyInjection
             services.AddScoped<RegisterHandler>();
             services.AddScoped<LoginHandler>();
             services.AddScoped<RefreshTokenHandler>();
+            services.AddScoped<LogoutHandler>();
 
             // Security
             services.AddSingleton<PasswordHasher>();
@@ -55,7 +60,6 @@ namespace DMS.Auth.DependencyInjection
             services.AddMediatR(cfg =>
                 cfg.RegisterServicesFromAssembly(typeof(ServiceCollectionExtensions).Assembly));
             services.AddValidatorsFromAssembly(typeof(ServiceCollectionExtensions).Assembly);
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddRateLimiter(options =>
             {
                 options.AddFixedWindowLimiter("login-policy", opt =>

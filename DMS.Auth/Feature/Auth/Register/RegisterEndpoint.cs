@@ -18,15 +18,8 @@
             [FromBody] RegisterRequest request,
             CancellationToken cancellationToken)
         {
-            try
-            {
-                var response = await _handler.HandleAsync(request, cancellationToken);
-                return Ok(response);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return Conflict(new { message = ex.Message });
-            }
+            var response = await _handler.HandleAsync(request, cancellationToken);
+            return Ok(response);
         }
     }
 }

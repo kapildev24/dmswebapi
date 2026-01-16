@@ -1,5 +1,4 @@
-﻿using DMS.Auth.Feature.JobCard.Endpoint;
-using Microsoft.AspNetCore.HttpOverrides;
+﻿using Microsoft.AspNetCore.HttpOverrides;
 
 namespace DMS.Auth.DependencyInjection
 {
@@ -28,7 +27,6 @@ namespace DMS.Auth.DependencyInjection
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
             });
 
-            app.MapJobCardEndpoints();
             app.UseGlobalExceptionHandling();
 
             app.UseCors("AllowAll");
@@ -39,7 +37,7 @@ namespace DMS.Auth.DependencyInjection
             app.UseAuthorization();
 
             app.MapControllers();
-
+            app.UseRateLimiter();
             return app;
         }
     }
