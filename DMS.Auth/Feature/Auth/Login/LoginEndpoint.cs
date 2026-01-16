@@ -21,16 +21,9 @@ namespace DMS.Auth.Feature.Auth.Login
             [FromBody] LoginRequest request,
             CancellationToken cancellationToken)
         {
-            try
-            {
-                var response = await _handler.HandleAsync(request, cancellationToken);
-                return Ok(response);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                // Prevent user enumeration
-                return Unauthorized(new { message = "Invalid credentials." });
-            }
+            // No try-catch needed - GlobalExceptionMiddleware handles UnauthorizedAccessException
+            var response = await _handler.HandleAsync(request, cancellationToken);
+            return Ok(response);
         }
     }
 }
