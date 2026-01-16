@@ -8,11 +8,11 @@
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id)
-                .HasColumnType("uuid");
+            builder.Property(x => x.Id);
+                // Column type will be inferred by provider (uuid for PostgreSQL, TEXT for SQLite)
 
-            builder.Property(x => x.UserId)
-                .HasColumnType("uuid");
+            builder.Property(x => x.UserId);
+                // Column type will be inferred by provider (uuid for PostgreSQL, TEXT for SQLite)
 
             builder.Property(x => x.Token)
                 .IsRequired();

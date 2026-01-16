@@ -30,13 +30,19 @@ namespace DMS.Auth.DependencyInjection
 
             services.AddDbContext<AuthDbContext>(options =>
             {
-                // SQLIte connection
-                //options.UseSqlite(
-                //    configuration.GetConnectionString("AuthDatabase"));
-
-                //For PostgreSQL connection
-                options.UseNpgsql(
-                    configuration.GetConnectionString("AuthDatabase"));
+                var connectionString = configuration.GetConnectionString("AuthDatabase");
+                
+                // Detect database provider based on connection string
+                if (connectionString!.Contains("Data Source=") && connectionString.EndsWith(".db"))
+                {
+                    // SQLite for local development
+                    options.UseSqlite(connectionString);
+                }
+                else
+                {
+                    // PostgreSQL for production
+                    options.UseNpgsql(connectionString);
+                }
             });
 
             // Feature handlers
